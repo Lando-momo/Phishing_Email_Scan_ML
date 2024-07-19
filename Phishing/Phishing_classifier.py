@@ -20,3 +20,16 @@ def main():
     # Initialize and train DecisionTreeClassifier
     classifier = DecisionTreeClassifier()
     classifier.fit(training_inputs, training_outputs)
+
+    
+    # Save trained model to pickle file
+    with open('decision_tree_model.pkl', 'wb') as model_file:
+        pickle.dump(classifier, model_file)
+
+    # Evaluate model accuracy
+    predictions = classifier.predict(testing_inputs)
+    accuracy = 100.0 * accuracy_score(testing_outputs, predictions)
+    print(f"Model Accuracy: {accuracy}%")
+
+if __name__ == "__main__":
+    main()
